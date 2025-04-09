@@ -1,0 +1,20 @@
+[[collection]]
+type = "card"
+title = "AI News Aggregator"
+link = "https://example.com"
+content = "A Flask-based web app that fetches real-time news from multiple APIs, merges and formats it into a clean interface for users. Includes user authentication and personalized feeds, with plans for future enhancements like keyword-based filtering and sentiment analysis."
+tags = ["python", "flask", "apis"]
+
+[[collection]]
+type = "card"
+title = "Timetable Generator using Genetic Algorithms"
+link = "https://example.com"
+content = "Designed an intelligent academic scheduling tool using genetic algorithms to automate conflict-free timetable generation based on constraints like room availability, teacher preferences, and subject combinations."
+tags = ["python", "genetic algorithms"]
+
+[[collection]]
+type = "card"
+title = "Email Spam Detection System"
+link = "https://example.com"
+content = "Built a machine learning pipeline to detect spam using Naive Bayes and decision trees. Focused on data cleaning, feature extraction, algorithm comparison, and evaluation using accuracy, precision, and confusion matrices."
+tags = ["machine learning", "python"]
