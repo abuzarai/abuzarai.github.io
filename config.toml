@@ -6,8 +6,8 @@
 #=========================================================================================
 
 base_url = "https://example.com"
-title = "xxxx"
-description = "xxxx xxxx xxxx"
+title = "Abuzar Khan"
+description = "AI Student"
 default_language = "en"
 theme = "serene"
 output_dir = "public"
@@ -52,7 +52,7 @@ blog_section_path = "/posts"
 back_link_text = "Back" # Text of the back button
 force_theme = false # false | "light" | "dark"
 
-footer_copyright = "© 2025 <your-name>"
+footer_copyright = "© 2025 Abuzar Khan"
 footer_credits = true # Whether to show "Built with zola and serene" in footer
 
 not_found_error_text = "404 Not Found"
