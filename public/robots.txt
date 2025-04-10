@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 Allow: /
-Sitemap: abuzarai.github.io/sitemap.xml
+Sitemap: https://abuzarai.github.io/sitemap.xml

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>abuzarai.github.io/</loc>
+        <loc>https://abuzarai.github.io/</loc>
     </url>
     <url>
-        <loc>abuzarai.github.io/about/</loc>
+        <loc>https://abuzarai.github.io/about/</loc>
     </url>
     <url>
-        <loc>abuzarai.github.io/categories/</loc>
+        <loc>https://abuzarai.github.io/categories/</loc>
     </url>
     <url>
-        <loc>abuzarai.github.io/posts/</loc>
+        <loc>https://abuzarai.github.io/posts/</loc>
     </url>
     <url>
-        <loc>abuzarai.github.io/projects/</loc>
+        <loc>https://abuzarai.github.io/projects/</loc>
     </url>
     <url>
-        <loc>abuzarai.github.io/tags/</loc>
+        <loc>https://abuzarai.github.io/tags/</loc>
     </url>
 </urlset>
