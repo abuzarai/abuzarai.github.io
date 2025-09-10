@@ -25,4 +25,4 @@ recent_more_text = "more »"
 date_format = "%b %-d, %Y"
 +++
 
-Hi, I'm a final year Artificial Intelligence undergraduate with a passion for building impactful, itelligent systems that solve real-world problems. With hands-on experience in Python development, data analysis and machine learning, I've built projects that leverage cutting-edge technologies to address complex challenges. I'm always open to collaborating on innovative projects that challenge me to grow and learn. If you're interested, don't hesitate to reach out!
+Hi, I'm a final year Artificial Intelligence undergraduate with a passion for building impactful, intelligent systems that solve real-world problems. With hands-on experience in Python development, data analysis and machine learning, I've built projects that leverage cutting-edge technologies to address complex challenges. I'm always open to collaborating on innovative projects that challenge me to grow and learn. If you're interested, don't hesitate to reach out!
