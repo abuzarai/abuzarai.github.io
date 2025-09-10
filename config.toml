@@ -1,11 +1,11 @@
-# serene v5.1.0
+# serene v5.3.1
 #
 # - docs: https://github.com/isunjn/serene/blob/latest/USAGE.md
 # - check for updates: https://github.com/isunjn/serene/releases
 #
 #=========================================================================================
 
-base_url = "https://example.com"
+base_url = "https://abuzarai.github.io"
 title = "Abuzar Khan"
 description = "AI Student"
 default_language = "en"
@@ -21,7 +21,7 @@ taxonomies = [{ name = "tags" }, { name = "categories" }]
 [markdown]
 highlight_code = true
 highlight_theme = "css"
-extra_syntaxes_and_themes = ["highlight_themes"]
+extra_syntaxes_and_themes = ["themes/serene/highlight_themes"]
 highlight_themes_css = [
   { theme = "serene-light", filename = "hl-light.css" },
   { theme = "serene-dark", filename = "hl-dark.css" },
@@ -44,7 +44,6 @@ anchors = "on"
 sections = [
   { name = "posts", path = "/posts", is_external = false },
   { name = "projects", path = "/projects", is_external = false },
-  # { name = "tags", path = "/tags", is_external = false },
   # { name = "github", path = "https://github.com/<your-username>", is_external = true },
 ]
 blog_section_path = "/posts"
