@@ -34,7 +34,7 @@ jobs:
       # Install Zola with a specific version
       - name: Install Zola
         run: |
-          wget -qO- https://github.com/getzola/zola/releases/download/v0.20.0/zola-v0.20.0-x86_64-unknown-linux-gnu.tar.gz | tar xz
+          wget -qO- https://github.com/getzola/zola/releases/download/v0.22.1/zola-v0.22.1-x86_64-unknown-linux-gnu.tar.gz | tar xz
           sudo mv zola /usr/local/bin
 
       # Debug: List content of theme directory
