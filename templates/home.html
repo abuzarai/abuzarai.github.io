@@ -8,7 +8,7 @@
 {% endblock desc %}
 
 {% block head %}
-{% if config.markdown.highlighting.style == "class" %}
+{% if config.markdown.highlight_theme == "css" %}
   {% if config.extra.force_theme == "dark" %}
     <link id="hl" rel="stylesheet" type="text/css" href="{{ get_url(path='giallo-dark.css') }}" />
   {% else %}
