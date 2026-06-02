@@ -24,8 +24,11 @@ external_links_target_blank = false
 external_links_no_follow = true
 external_links_no_referrer = true
 smart_punctuation = false
-highlight_code_theme = "github-light"
-highlight_code_theme_dark = "github-dark"
+
+[markdown.highlighting]
+style = "inline"
+light_theme = "github-light"
+dark_theme = "github-dark"
 
 [slugify]
 paths = "on"
