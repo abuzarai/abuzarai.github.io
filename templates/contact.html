@@ -5,10 +5,10 @@
 
 {% block content %}
     <header class="hero">
-      <h1>contact<span class="cursor" aria-hidden="true"></span></h1>
+      <p class="prompt">{{ macros::prompt(cmd='cat ~/.contacts') }}</p>
+      <h1 class="sr-only">contact</h1>
       <p class="sub">
-        {{ macros::prompt(cmd='cat ~/.contacts') }}
-        — the fastest way is email.
+        the fastest way is email.
       </p>
     </header>
 

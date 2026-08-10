@@ -5,10 +5,10 @@
 
 {% block content %}
     <header class="hero">
-      <h1>projects<span class="cursor" aria-hidden="true"></span></h1>
+      <p class="prompt">{{ macros::prompt(cmd='ls ~/projects') }}</p>
+      <h1 class="sr-only">projects</h1>
       <p class="sub">
-        {{ macros::prompt(cmd='ls ~/projects') }}
-        — some cools projects i made.
+        some cools projects i made.
       </p>
     </header>
 

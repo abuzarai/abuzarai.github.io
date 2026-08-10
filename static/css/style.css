@@ -68,6 +68,20 @@
 
 * { box-sizing: border-box; }
 
+/* visually hidden but still read by screen readers + search (C-shape note:
+   section heroes now show the prompt → description only, terminal-faithful) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 html {
   color-scheme: dark;
   scroll-behavior: smooth;

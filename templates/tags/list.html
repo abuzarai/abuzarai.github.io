@@ -1,13 +1,14 @@
 {% extends "base.html" %}
+{% import "macros.html" as macros %}
 
 {% block wd %}~/tags{% endblock wd %}
 
 {% block content %}
     <header class="hero">
-      <h1>tags<span class="cursor" aria-hidden="true"></span></h1>
+      <p class="prompt">{{ macros::prompt(cmd='ls ~/tags') }}</p>
+      <h1 class="sr-only">tags</h1>
       <p class="sub">
-        <span class="p">$</span> <span class="d">ls ~/tags</span>
-        — every tag, one row each. writings &amp; projects mix here.
+        every tag, one row each. writings &amp; projects mix here.
       </p>
     </header>
 

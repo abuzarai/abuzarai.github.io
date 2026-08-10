@@ -6,10 +6,10 @@
 {% block content %}
     {% set ls_cmd = "ls ~" ~ section.path|trim_end_matches(pat='/') %}
     <header class="hero">
-      <h1>{{ section.title }}<span class="cursor" aria-hidden="true"></span></h1>
+      <p class="prompt">{{ macros::prompt(cmd=ls_cmd) }}</p>
+      <h1 class="sr-only">{{ section.title }}</h1>
       <p class="sub">
-        {{ macros::prompt(cmd=ls_cmd) }}
-        — {{ section.extra.subtitle }}
+        {{ section.extra.subtitle }}
       </p>
     </header>
 

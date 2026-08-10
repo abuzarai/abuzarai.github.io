@@ -1,13 +1,15 @@
 {% extends "base.html" %}
+{% import "macros.html" as macros %}
 
 {% block wd %}~/tags/{{ term.slug }}{% endblock wd %}
 
 {% block content %}
+    {% set grep_cmd = 'grep ~/tags #' ~ term.name %}
     <header class="hero">
-      <h1>#{{ term.name }}<span class="cursor" aria-hidden="true"></span></h1>
+      <p class="prompt">{{ macros::prompt(cmd=grep_cmd) }}</p>
+      <h1 class="sr-only">#{{ term.name }}</h1>
       <p class="sub">
-        <span class="p">$</span> <span class="d">grep ~/tags #{{ term.name }}</span>
-        — {{ term.page_count }} item{% if term.page_count != 1 %}s{% endif %}{% if term.pages %}, across sections{% endif %}.
+        {{ term.page_count }} item{% if term.page_count != 1 %}s{% endif %}{% if term.pages %}, across sections{% endif %}.
       </p>
     </header>
 
