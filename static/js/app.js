@@ -4,11 +4,6 @@
 (function () {
   'use strict';
 
-  // --- B7: honor prefers-reduced-motion in JS ---
-  function prefersReducedMotion() {
-    return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  }
-
   /* ---------- 404: show the real path that was requested ---------- */
   var p404s = document.querySelectorAll('.p404');
   if (p404s.length) {
@@ -26,38 +21,6 @@
   window.addEventListener('scroll', updateBtt, { passive: true });
   window.addEventListener('resize', updateBtt);
   updateBtt();
-
-  /* ---------- console easter egg ---------- */
-  console.log(
-    '%c\n' +
-    '  █████╗ ██████╗ ██╗   ██╗███████╗ █████╗ ██████╗ \n' +
-    ' ██╔══██╗██╔══██╗██║   ██║╚══███╔╝██╔══██╗██╔══██╗\n' +
-    ' ███████║██████╔╝██║   ██║  ███╔╝ ███████║██████╔╝\n' +
-    ' ██╔══██║██╔══██╗██║   ██║ ███╔╝  ██╔══██║██╔══██╗\n' +
-    ' ██║  ██║██████╔╝╚██████╔╝███████╗██║  ██║██║  ██║\n' +
-    ' ╚═╝  ╚═╝╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝\n' +
-    '\n  hey — you found the console. nice.\n  try: typing my name, somewhere on this page\n',
-    'color:#e5a00d; font-weight:bold;'
-  );
-
-  /* ---------- hidden config (secret key sequence) ---------- */
-  var CONFIG_SECRET = ['a', 'b', 'u', 'z', 'a', 'r'];
-  var typed = [];
-  var configBox = document.querySelector('.configbox');
-  document.addEventListener('keydown', function (e) {
-    if (!configBox) return;
-    if (e.key.length !== 1) return;              // ignore modifiers, arrows
-    if (/^[a-zA-Z0-9]$/.test(e.key)) {
-      typed.push(e.key.toLowerCase());
-      if (typed.length > CONFIG_SECRET.length) typed.shift();
-      if (typed.join('') === CONFIG_SECRET.join('')) {
-        typed = [];
-        configBox.hidden = false;
-        configBox.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'nearest' });
-        console.log('%c~/.config unlocked — you typed my name. cute.', 'color:#e5a00d;');
-      }
-    }
-  });
 })();
 
 /* ============================================================

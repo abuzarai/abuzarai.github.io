@@ -360,19 +360,6 @@ footer a:hover { color: var(--amber); }
 .socials a:hover { color: var(--amber); }
 .socials .hint { color: var(--dim); font-size: 13px; }
 
-.configbox {
-  border: 1px dashed var(--line-strong);
-  border-radius: var(--r-md);
-  background: var(--panel-2);
-  padding: var(--space-5) var(--space-5);
-  margin-top: var(--space);
-}
-.configbox h3 { margin: 0 0 var(--space-3); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); }
-.configbox ul { margin: 0; padding-left: var(--space-5); color: var(--dim); }
-.configbox li { margin: var(--space-2) 0; }
-
-[hidden] { display: none !important; }
-
 /* ---------- musings (archive) ---------- */
 
 .post-list { list-style: none; margin: 0; padding: 0; }
