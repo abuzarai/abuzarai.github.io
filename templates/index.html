@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "macros.html" as macros %}
 
 {% block wd %}~{% endblock wd %}
 
@@ -7,7 +8,7 @@
     <header class="hero">
       <h1>abuzar khan<span class="cursor" aria-hidden="true"></span></h1>
       <p class="sub">
-        <span class="p">$</span> <span class="d">whoami</span>
+        {{ macros::prompt(cmd='whoami') }}
         — I am an AI/ML engineer with a passion for building impactful, intelligent systems that solve real-world problems.
         I fine-tune small models to work in
         Urdu &amp; English, build the APIs and services that make them

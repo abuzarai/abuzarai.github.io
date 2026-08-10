@@ -1,9 +1,13 @@
 /* Terminal site — tiny vanilla JS.
-   Console easter egg · hidden config.
-   No dependencies. */
+  No dependencies. */
 
 (function () {
   'use strict';
+
+  // --- B7: honor prefers-reduced-motion in JS ---
+  function prefersReducedMotion() {
+    return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
 
   /* ---------- 404: show the real path that was requested ---------- */
   var p404s = document.querySelectorAll('.p404');
@@ -49,7 +53,7 @@
       if (typed.join('') === CONFIG_SECRET.join('')) {
         typed = [];
         configBox.hidden = false;
-        configBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        configBox.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'nearest' });
         console.log('%c~/.config unlocked — you typed my name. cute.', 'color:#e5a00d;');
       }
     }

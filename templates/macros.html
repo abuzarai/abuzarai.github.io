@@ -1,0 +1,5 @@
+{# Shared prompt glyphs — one source of truth for the `$ cmd` split (B4).
+   Roll coloring: $ green, command amber. Call with macros::prompt(cmd=...). #}
+{% macro prompt(cmd) -%}
+<span class="p">$</span> <span class="d">{{ cmd | safe }}</span>
+{%- endmacro prompt %}

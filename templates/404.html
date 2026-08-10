@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% import "macros.html" as macros %}
 {% set section = false %} {# 404 has no section/page context — guards the base head's title fallback #}
 
 {% block main_class %} err{% endblock main_class %}
 {% block wd %}~/<span class="p404">the-page-you-wanted</span>{% endblock wd %}
 
 {% block content %}
-    <p class="run"><span class="p">$</span> ls <span class="d">~/<span class="p404">the-page-you-wanted</span></span></p>
+    <p class="sub">{{ macros::prompt(cmd='ls ~/<span class="p404">the-page-you-wanted</span>') }}</p>
     <pre>ls: cannot access '~/<span class="p404">the-page-you-wanted</span>':
 No such file or directory</pre>
 
@@ -16,7 +17,7 @@ No such file or directory</pre>
       renamed, or never written in the first place — classic me.
     </p>
 
-    <ul class="links" style="margin-top:1.6rem;">
+    <ul class="links">
       <li><a href="{{ get_url(path='/') }}"><span class="k">cd</span><span>go home</span></a></li>
       <li><a href="{{ get_url(path='posts/', trailing_slash=true) }}"><span class="k">cd</span><span>read posts</span></a></li>
       <li><a href="mailto:abuzxrkhan@gmail.com"><span class="k">mail</span><span>tell me it's broken</span></a></li>

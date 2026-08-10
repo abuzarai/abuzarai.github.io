@@ -1,12 +1,14 @@
 {% extends "base.html" %}
+{% import "macros.html" as macros %}
 
 {% block wd %}~{{ section.path|trim_end_matches(pat='/') }}{% endblock wd %}
 
 {% block content %}
+    {% set ls_cmd = "ls ~" ~ section.path|trim_end_matches(pat='/') %}
     <header class="hero">
       <h1>{{ section.title }}<span class="cursor" aria-hidden="true"></span></h1>
       <p class="sub">
-        <span class="p">$</span> <span class="d">ls ~{{ section.path|trim_end_matches(pat='/') }}</span>
+        {{ macros::prompt(cmd=ls_cmd) }}
         — {{ section.extra.subtitle }}
       </p>
     </header>

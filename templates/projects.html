@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "macros.html" as macros %}
 
 {% block wd %}~/projects{% endblock wd %}
 
@@ -6,7 +7,7 @@
     <header class="hero">
       <h1>projects<span class="cursor" aria-hidden="true"></span></h1>
       <p class="sub">
-        <span class="p">$</span> <span class="d">ls ~/projects</span>
+        {{ macros::prompt(cmd='ls ~/projects') }}
         — some cools projects i made.
       </p>
     </header>
