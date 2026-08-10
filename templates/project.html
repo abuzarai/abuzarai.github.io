@@ -10,6 +10,6 @@
         {{ page.content | safe }}
       </div>
       <p class="plink"><a href="{{ page.extra.link }}" target="_blank" rel="noreferrer">→ visit {{ page.title }}</a></p>
-      <a class="back" href="{{ get_url(path='projects/') }}">all projects</a>
+      <a class="back" href="{{ get_url(path='projects/', trailing_slash=true) }}">all projects</a>
     </article>
 {% endblock content %}

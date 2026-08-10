@@ -17,8 +17,8 @@ No such file or directory</pre>
     </p>
 
     <ul class="links" style="margin-top:1.6rem;">
-      <li><a href="{{ get_url(path='./') }}"><span class="k">cd</span><span>go home</span></a></li>
-      <li><a href="{{ get_url(path='posts/') }}"><span class="k">cd</span><span>read posts</span></a></li>
+      <li><a href="{{ get_url(path='/') }}"><span class="k">cd</span><span>go home</span></a></li>
+      <li><a href="{{ get_url(path='posts/', trailing_slash=true) }}"><span class="k">cd</span><span>read posts</span></a></li>
       <li><a href="mailto:abuzxrkhan@gmail.com"><span class="k">mail</span><span>tell me it's broken</span></a></li>
     </ul>
 {% endblock content %}
