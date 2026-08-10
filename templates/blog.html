@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block wd %}~{{ section.path|trim_end_matches(pat='/') }}{% endblock wd %}
+
+{% block content %}
+    <header class="hero">
+      <h1>{{ section.title }}<span class="cursor" aria-hidden="true"></span></h1>
+      <p class="sub">
+        <span class="p">$</span> <span class="d">ls ~{{ section.path|trim_end_matches(pat='/') }}</span>
+        — {{ section.extra.subtitle }}
+      </p>
+    </header>
+
+    <section class="block">
+      {% if section.pages %}
+      <ul class="post-list">
+        {% for p in section.pages %}
+        <li>
+          <a class="pt" href="{{ p.permalink | safe }}">
+            <span class="pd">{{ p.date | date(format="%Y-%m-%d") }}</span>
+            <b>{{ p.title }}</b>
+            <span class="psub">{{ p.description }}</span>
+          </a>
+          {% if p.taxonomies.tags is defined %}{% for t in p.taxonomies.tags %}<a class="tag" href="{{ get_taxonomy_url(kind='tags', name=t) }}">#{{ t }}</a>{% endfor %}{% endif %}
+          {% if p.draft %}<span class="tag">#draft</span>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="muted">no entries in this directory — yet.</p>
+      {% endif %}
+    </section>
+
+    <footer class="list-foot">
+      <a class="rss-btn" href="{{ get_url(path='feed.xml', trailing_slash=false) | safe }}" rel="alternate">[ rss ]</a>
+      <span class="muted">/ feed.xml — all writings</span>
+      {% if section.extra.other_link is defined %}
+      <a class="muted cross" href="{{ get_url(path=section.extra.other_link.path) }}">→ {{ section.extra.other_link.label }}</a>
+      {% endif %}
+      <a class="muted cross" href="{{ get_url(path='tags/') }}"># all tags</a>
+    </footer>
+{% endblock content %}

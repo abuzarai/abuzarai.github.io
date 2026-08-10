@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block wd %}~{{ page.path }}{% endblock wd %}
+
+{% block content %}
+    <article class="post">
+      <h1>{{ page.title }}</h1>
+      <p class="meta">{{ page.date | date(format="%Y-%m-%d") }} · {% if page.reading_time %}{{ page.reading_time }} min read{% endif %}
+        {% if page.taxonomies.tags is defined %}{% for t in page.taxonomies.tags %}<a class="tag" href="{{ get_taxonomy_url(kind='tags', name=t) }}">#{{ t }}</a>{% endfor %}{% endif %}
+      </p>
+      <div class="article">
+        {{ page.content | safe }}
+      </div>
+      <a class="back" href="{{ get_url(path='posts/') }}">all posts</a>
+    </article>
+{% endblock content %}

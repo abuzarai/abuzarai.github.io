@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block wd %}~/projects{% endblock wd %}
+
+{% block content %}
+    <header class="hero">
+      <h1>projects<span class="cursor" aria-hidden="true"></span></h1>
+      <p class="sub">
+        <span class="p">$</span> <span class="d">ls ~/projects</span>
+        — some cools projects i made.
+      </p>
+    </header>
+
+    <section class="block">
+      <ul class="proj-list">
+        {% for p in section.pages %}
+        <li>
+          <details>
+            <summary>
+              <span class="arrow">{% if loop.last %}└─{% else %}├─{% endif %}</span>
+              <b>{{ p.title }}</b>
+              <span class="desc">— {{ p.description }}</span>
+            </summary>
+            <div class="proj-body">
+              {{ p.content | safe }}
+              <p class="plink"><a href="{{ p.extra.link }}" target="_blank" rel="noreferrer">→ visit {{ p.title }}</a></p>
+            </div>
+          </details>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <footer class="list-foot">
+      <a class="muted cross" href="{{ get_url(path='tags/') }}"># all tags</a>
+    </footer>
+{% endblock content %}

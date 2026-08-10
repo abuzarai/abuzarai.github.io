@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block wd %}~/tags{% endblock wd %}
+
+{% block content %}
+    <header class="hero">
+      <h1>tags<span class="cursor" aria-hidden="true"></span></h1>
+      <p class="sub">
+        <span class="p">$</span> <span class="d">ls ~/tags</span>
+        — every tag, one row each. writings &amp; projects mix here.
+      </p>
+    </header>
+
+    <section class="block">
+      {% if terms %}
+      <ul class="post-list">
+        {% for t in terms | sort(attribute="name") %}
+        <li>
+          <a class="pt" href="{{ t.permalink | safe }}">
+            <span class="pd">{{ t.page_count }}</span>
+            <b>#{{ t.name }}</b>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="muted">no tags — yet.</p>
+      {% endif %}
+    </section>
+
+    <footer class="list-foot">
+      <a class="muted cross" href="{{ get_url(path='posts/') }}">← posts</a>
+    </footer>
+{% endblock content %}

@@ -1,0 +1,23 @@
+base_url = "https://abuzarai.github.io"
+title = "abuzar"
+description = "Abuzar Khan - AI/ML Engineer"
+default_language = "en"
+output_dir = "public"
+minify_html = false
+generate_sitemap = true
+generate_feeds = true
+feed_filenames = ["feed.xml"]
+
+# /tags/ groups all content (posts, musings, projects) by tag.
+taxonomies = [{ name = "tags" }]
+
+[markdown]
+smart_punctuation = false
+#no_follow = true
+#no_referrer = true
+render_emoji = false
+
+[extra]
+# shared across templates
+author = "Abuzar Khan"
+site_title = "abuzar"

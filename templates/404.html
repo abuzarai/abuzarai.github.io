@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% set section = false %} {# no context for 404 in the base head — guard description et al #}
+
+{% block wd %}~/<span class="p404">the-page-you-wanted</span>{% endblock wd %}
+
+{% block content %}
+    <p class="run"><span class="p">$</span> ls <span class="d">~/<span class="p404">the-page-you-wanted</span></span></p>
+    <pre>ls: cannot access '~/<span class="p404">the-page-you-wanted</span>':
+No such file or directory</pre>
+
+    <p class="code">404</p>
+
+    <p>
+      The file you're looking for isn't in this filesystem. Maybe it was moved,
+      renamed, or never written in the first place — classic me.
+    </p>
+
+    <ul class="links" style="margin-top:1.6rem;">
+      <li><a href="{{ get_url(path='./') }}"><span class="k">cd</span><span>go home</span></a></li>
+      <li><a href="{{ get_url(path='posts/') }}"><span class="k">cd</span><span>read posts</span></a></li>
+      <li><a href="mailto:abuzxrkhan@gmail.com"><span class="k">mail</span><span>tell me it's broken</span></a></li>
+    </ul>
+{% endblock content %}
