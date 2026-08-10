@@ -4,12 +4,12 @@
 {% block wd %}~{% endblock wd %}
 
 {% block content %}
-    <!-- hero -->
+    <!-- hero: one shell session — $ whoami, then its output -->
     <header class="hero">
+      <p class="prompt">{{ macros::prompt(cmd='whoami') }}</p>
       <h1>abuzar khan<span class="cursor" aria-hidden="true"></span></h1>
       <p class="sub">
-        {{ macros::prompt(cmd='whoami') }}
-        — I am an AI/ML engineer with a passion for building impactful, intelligent systems that solve real-world problems.
+        I am an AI/ML engineer with a passion for building impactful, intelligent systems that solve real-world problems.
         I fine-tune small models to work in
         Urdu &amp; English, build the APIs and services that make them
         actually useful, and deploy them into products people use — the whole
