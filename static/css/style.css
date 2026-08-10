@@ -614,5 +614,8 @@ a.tag:hover { color: var(--green); }
   a { color: #111 !important; text-decoration: underline; }
   .cb-wrap, .article pre, .article code { border: 1px solid #999; }
   .article pre { white-space: pre-wrap; overflow: visible; word-break: break-word; }
-  .proj-list summary::after, .gh::before, .back::before { content: none; }
+  .proj-list summary::after, .proj-list .arrow, .gh::before, .back::before { content: none; }
+  .proj-list .arrow { display: none; }
+  /* article back-navigation ("all posts") is print chrome — keep the © footer */
+  .back { display: none !important; }
 }
