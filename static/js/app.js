@@ -5,11 +5,6 @@
 (function () {
   'use strict';
 
-  // --- year in footers ---
-  var yr = new Date().getFullYear();
-  var yrs = document.querySelectorAll('.yr, #yr');
-  yrs.forEach(function (el) { el.textContent = yr; });
-
   /* ---------- 404: show the real path that was requested ---------- */
   var p404s = document.querySelectorAll('.p404');
   if (p404s.length) {
@@ -27,19 +22,6 @@
   window.addEventListener('scroll', updateBtt, { passive: true });
   window.addEventListener('resize', updateBtt);
   updateBtt();
-
-  /* ---------- KaTeX math (deferred scripts may not be loaded yet) ---------- */
-  document.addEventListener('DOMContentLoaded', function () {
-    if (window.renderMathInElement && window.katex) {
-      renderMathInElement(document.body, {
-        delimiters: [
-          { left: '$$', right: '$$', display: true },
-          { left: '$', right: '$', display: false },
-        ],
-        throwOnError: false,
-      });
-    }
-  });
 
   /* ---------- console easter egg ---------- */
   console.log(

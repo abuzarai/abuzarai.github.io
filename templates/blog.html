@@ -35,8 +35,8 @@
       <a class="rss-btn" href="{{ get_url(path='feed.xml', trailing_slash=false) | safe }}" rel="alternate">[ rss ]</a>
       <span class="muted">/ feed.xml — all writings</span>
       {% if section.extra.other_link is defined %}
-      <a class="muted cross" href="{{ get_url(path=section.extra.other_link.path) }}">→ {{ section.extra.other_link.label }}</a>
+      <a class="muted" href="{{ get_url(path=section.extra.other_link.path) }}">→ {{ section.extra.other_link.label }}</a>
       {% endif %}
-      <a class="muted cross" href="{{ get_url(path='tags/') }}"># all tags</a>
+      <a class="muted" href="{{ get_url(path='tags/') }}"># all tags</a>
     </footer>
 {% endblock content %}

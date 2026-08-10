@@ -73,7 +73,8 @@ a {
 a:hover { color: var(--amber); }
 a:focus-visible,
 button:focus-visible,
-input:focus-visible {
+input:focus-visible,
+summary:focus-visible {
   outline: 2px solid var(--amber);
   outline-offset: 3px;
   border-radius: 2px;
@@ -226,7 +227,7 @@ input:focus-visible {
 .proj-list summary:hover b { color: var(--amber); }
 .proj-list summary b { color: var(--green); font-weight: 600; flex: none; white-space: nowrap; }
 .proj-list summary .desc {
-  color: var(--faint);
+  color: var(--dim);
   font-size: 13px;
   flex: 1 1 auto;
   min-width: 0;
@@ -238,7 +239,7 @@ input:focus-visible {
 .proj-list summary::after {
   content: "▸";
   margin-left: auto;
-  color: var(--fainter);
+  color: var(--dim);
   transition: transform 0.15s ease;
 }
 .proj-list details[open] summary::after { transform: rotate(90deg); }
@@ -303,19 +304,17 @@ input:focus-visible {
 p { margin: 0 0 1rem; max-width: 60ch; }
 p.muted { color: var(--dim); }
 
-/* ---------- footer ---------- */
-
 footer {
   margin-top: auto;
   padding-top: var(--space);
   border-top: 1px solid var(--line);
-  color: var(--faint);
+  color: var(--dim);
   font-size: 12.5px;
   display: flex; flex-wrap: wrap;
   gap: 0.5rem 1.5rem;
   justify-content: space-between;
 }
-footer a { color: var(--faint); }
+footer a { color: var(--dim); }
 footer a:hover { color: var(--amber); }
 .btt {
   visibility: hidden;
@@ -337,6 +336,7 @@ footer a:hover { color: var(--amber); }
 .nav a:hover { color: var(--amber); }
 .nav a[aria-current] { color: var(--fg); }
 .nav a[aria-current]::after { content: "*"; color: var(--amber); margin-left: 3px; }
+.nav a[aria-current]:hover { color: var(--amber); } /* deliberate — wins over the start rule */
 
 /* ---------- socials ---------- */
 
@@ -357,7 +357,7 @@ footer a:hover { color: var(--amber); }
 .socials .arrow { color: var(--fainter); user-select: none; }
 .socials a { text-decoration: none; color: var(--fg); }
 .socials a:hover { color: var(--amber); }
-.socials .hint { color: var(--faint); font-size: 13px; }
+.socials .hint { color: var(--dim); font-size: 13px; }
 
 .configbox {
   border: 1px dashed var(--line-strong);
@@ -385,7 +385,7 @@ footer a:hover { color: var(--amber); }
   display: flex; flex-direction: column; gap: 0.15rem;
   text-decoration: none;
 }
-.post-list .pd { color: var(--faint); font-size: 12.5px; }
+.post-list .pd { color: var(--dim); font-size: 12.5px; }
 .post-list .pt b { font-weight: 600; color: var(--fg); font-size: 16px; }
 .post-list .pt:hover b { color: var(--amber); }
 .post-list .psub { color: var(--dim); font-size: 14px; }
@@ -414,7 +414,7 @@ a.tag:hover { color: var(--green); }
 
 .post { max-width: 44rem; }
 .post h1 { margin: 0 0 0.2rem; font-size: clamp(1.35rem, 3.5vw, 1.9rem); line-height: 1.3; }
-.post .meta { color: var(--faint); font-size: 13px; margin: 0 0 2rem; }
+.post .meta { color: var(--dim); font-size: 13px; margin: 0 0 2rem; }
 .article { font-size: 15.5px; line-height: 1.9; }
 .article h2 { font-size: 1.2rem; margin: 2.4rem 0 0.8rem; color: var(--fg); }
 .article h2::before { content: "## "; color: var(--faint); }
@@ -510,7 +510,7 @@ a.tag:hover { color: var(--green); }
   font-size: 10.5px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--faint);
+  color: var(--dim);
 }
 .cb-copy {
   margin-left: auto;
@@ -532,7 +532,7 @@ a.tag:hover { color: var(--green); }
 /* syntax tokens (hand-rolled highlighter in app.js) */
 .tok-kw { color: var(--amber); }
 .tok-str { color: var(--green); }
-.tok-cmt { color: var(--faint); font-style: italic; }
+.tok-cmt { color: var(--dim); font-style: italic; }
 .tok-num { color: var(--amber-soft); }
 .tok-fn { color: var(--fg); }
 
@@ -577,8 +577,7 @@ a.tag:hover { color: var(--green); }
     transition-duration: 0.01ms !important;
   }
   html { scroll-behavior: auto; }
-  .hero h1 .g { animation: none; }
-  .status .dot { animation: none; }
+  .hero h1 .cursor { animation: none; }
   .proj-list details::details-content { transition: none; }
 }
 
@@ -586,12 +585,11 @@ a.tag:hover { color: var(--green); }
 
 @media (max-width: 480px) {
   body { font-size: 14px; }
-  .titlebar .wtitle { display: none; }
+  .titlebar .wintitle { display: none; }
   footer { flex-direction: column; }
   .proj-list summary { gap: 0.3rem 0.5rem; flex-wrap: wrap; }
   .proj-list summary .desc {
-    flex: none;
-    min-width: 100%;
+    flex: 1 1 100%;
     overflow: visible;
     white-space: normal;
     text-overflow: clip;

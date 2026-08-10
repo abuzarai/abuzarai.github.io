@@ -1,6 +1,7 @@
 {% extends "base.html" %}
-{% set section = false %} {# no context for 404 in the base head — guard description et al #}
+{% set section = false %} {# 404 has no section/page context — guards the base head's title fallback #}
 
+{% block main_class %} err{% endblock main_class %}
 {% block wd %}~/<span class="p404">the-page-you-wanted</span>{% endblock wd %}
 
 {% block content %}

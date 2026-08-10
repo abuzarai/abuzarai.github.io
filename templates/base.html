@@ -23,7 +23,7 @@
   <title>{% if page.title %}{{ page.title }} · abuzar{% elif section.title %}{{ section.title }} · abuzar{% else %}abuzar ~ terminal{% endif %}</title>
 </head>
 <body>
-  <main class="page{% if section.extra.err or page.extra.err %} err{% endif %}">
+  <main class="page{% block main_class %}{% endblock main_class %}" id="top">
 
     <div class="titlebar" aria-hidden="true">
       <span class="dots"><i></i><i></i><i></i></span>
@@ -35,17 +35,17 @@
       {% set is_posts = current_path is defined and current_path is starting_with('/posts') %}
       {% set is_projects = current_path is defined and current_path is starting_with('/projects') %}
       {% set is_contact = current_path is defined and current_path is starting_with('/contact') %}
-      <a href="{{ get_url(path='.', trailing_slash=false) | safe }}" {% if is_home %}aria-current="true"{% endif %}>./</a>
-      <a href="{{ get_url(path='posts/') }}" {% if is_posts %}aria-current="true"{% endif %}>./posts</a>
-      <a href="{{ get_url(path='projects/') }}" {% if is_projects %}aria-current="true"{% endif %}>./projects</a>
-      <a href="{{ get_url(path='contact/') }}" {% if is_contact %}aria-current="true"{% endif %}>./contact</a>
+      <a href="{{ get_url(path='/') }}" {% if is_home %}aria-current="true"{% endif %}>./</a>
+      <a href="{{ get_url(path='posts/', trailing_slash=true) }}" {% if is_posts %}aria-current="true"{% endif %}>./posts</a>
+      <a href="{{ get_url(path='projects/', trailing_slash=true) }}" {% if is_projects %}aria-current="true"{% endif %}>./projects</a>
+      <a href="{{ get_url(path='contact/', trailing_slash=true) }}" {% if is_contact %}aria-current="true"{% endif %}>./contact</a>
     </nav>
 
     {% block content %}{% endblock content %}
 
     <footer>
       <span>© <span class="yr">{{ now() | date(format="%Y") }}</span> abuzar khan</span>
-      <span class="btt">↑ <a href="#">back to top</a></span>
+      <span class="btt">↑ <a href="#top">back to top</a></span>
     </footer>
   </main>
 
