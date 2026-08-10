@@ -492,9 +492,6 @@ a.tag:hover { color: var(--green); }
 .cb-hdr i:nth-child(1) { background: var(--dot-close); }
 .cb-hdr i:nth-child(2) { background: var(--dot-min); }
 .cb-hdr i:nth-child(3) { background: var(--dot-max); }
-.cb-hdr i:nth-child(1) { background: #ff5f57; }
-.cb-hdr i:nth-child(2) { background: #febc2e; }
-.cb-hdr i:nth-child(3) { background: #28c840; }
 .cb-hdr span {
   margin-left: 0.5rem;
   font-size: 10.5px;
@@ -519,12 +516,10 @@ a.tag:hover { color: var(--green); }
 .cb-copy:hover { color: var(--amber); border-color: var(--amber-soft); }
 .cb-copy.copied { color: var(--green); border-color: var(--green); }
 
-/* syntax tokens (hand-rolled highlighter in app.js) */
-.tok-kw { color: var(--amber); }
-.tok-str { color: var(--green); }
-.tok-cmt { color: var(--dim); font-style: italic; }
-.tok-num { color: var(--amber-soft); }
-.tok-fn { color: var(--fg); }
+/* syntax highlighting is server-side (Zola/giallo, class mode →
+   giallo.css); keep the code bg transparent to the terminal panel
+   (.article pre.z-code beats giallo.css loaded later in <head>) */
+.article pre.z-code { background: transparent; }
 
 /* math (KaTeX) */
 .article .math-block {

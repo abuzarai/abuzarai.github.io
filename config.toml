@@ -17,6 +17,10 @@ smart_punctuation = false
 #no_referrer = true
 render_emoji = false
 
+[markdown.highlighting]
+theme = "rose-pine"
+style = "class"
+
 [extra]
 # shared across templates
 author = "Abuzar Khan"
