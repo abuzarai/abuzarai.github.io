@@ -4,7 +4,7 @@
 {% block wd %}~/tags/{{ term.slug }}{% endblock wd %}
 
 {% block content %}
-    {% set grep_cmd = 'grep ~/tags #' ~ term.name %}
+    {% set grep_cmd = 'grep -rn "#' ~ term.name ~ '" ~/posts ~/projects' %}
     <header class="hero">
       <p class="prompt">{{ macros::prompt(cmd=grep_cmd) }}</p>
       <h1 class="sr-only">#{{ term.name }}</h1>

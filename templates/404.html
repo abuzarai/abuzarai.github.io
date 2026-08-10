@@ -6,8 +6,8 @@
 {% block wd %}~/<span class="p404">the-page-you-wanted</span>{% endblock wd %}
 
 {% block content %}
-    <p class="sub">{{ macros::prompt(cmd='ls ~/<span class="p404">the-page-you-wanted</span>') }}</p>
-    <pre>ls: cannot access '~/<span class="p404">the-page-you-wanted</span>':
+    <p class="sub">{{ macros::prompt(cmd='ls <span class="p404">the-page-you-wanted</span>') }}</p>
+    <pre>ls: cannot access '<span class="p404">the-page-you-wanted</span>':
 No such file or directory</pre>
 
     <p class="code">404</p>
