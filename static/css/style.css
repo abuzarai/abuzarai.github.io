@@ -4,21 +4,22 @@
    ============================================================ */
 
 :root {
-  --bg: #0a0a0f;
-  --panel: #0d0d12;
-  --panel-2: #101018;
-  --line: #1e1e28;
-  --line-strong: #2a2a38;
+  --bg: #2e2c2f;
+  --panel: #343236;
+  --panel-2: #403f42;
+  --code-bg: #1d1c1e;   /* screen well — darker than the editor bg */
+  --line: #3a383c;
+  --line-strong: #4a484c;
 
-  --fg: #d6d6de;
-  --dim: #8b8b98;
-  --faint: #565660;
-  --fainter: #3a3a44;
+  --fg: #e1e4dc;
+  --dim: #b1b3ad;
+  --faint: #69676a;
+  --fainter: #47454a;
 
-  --amber: #e5a00d;
-  --amber-soft: #b5861a;
-  --green: #3ddc97;
-  --red: #e5484d;
+  --amber: #729b79;
+  --amber-soft: #58705e;
+  --green: #98cca4;
+  --red: #ba5860;
 
   --mono: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono",
           "Fira Code", Menlo, Consolas, "Liberation Mono", monospace;
@@ -50,19 +51,13 @@
   /* measure (B3) */
   --measure: 60ch;
 
-  /* traffic-dot triad (B6) */
-  --dot-close: #ff5f57;
-  --dot-min: #febc2e;
-  --dot-max: #28c840;
-  --dot-rim: rgba(255,255,255,0.14);
-
   /* type scale (C1) — clamp exports */
   --fs-hero: clamp(1.6rem, 4.5vw, 2.3rem);
   --fs-title: clamp(1.35rem, 3.5vw, 1.9rem);
 
   /* ambient washes (C2) */
-  --wash: rgba(229,160,13,0.06);
-  --sel: rgba(229,160,13,0.28);
+  --wash: rgba(114,155,121,0.06);
+  --sel: rgba(114,155,121,0.28);
   --zebra: rgba(255,255,255,0.02);
 }
 
@@ -173,17 +168,8 @@ summary:focus-visible {
   color: var(--dim);
   font-size: 13px;
 }
-.titlebar .dots { display: flex; gap: 6px; }
-.titlebar .dots i {
-  width: 11px; height: 11px; border-radius: 50%;
-  display: inline-block;
-  border: 1px solid var(--dot-rim);
-}
-.titlebar .dots i:nth-child(1) { background: var(--dot-close); }
-.titlebar .dots i:nth-child(2) { background: var(--dot-min); }
-.titlebar .dots i:nth-child(3) { background: var(--dot-max); }
 .titlebar .wintitle {
-  color: var(--faint);
+  color: var(--dim);
   letter-spacing: 0.02em;
   overflow: hidden;
   white-space: nowrap;
@@ -479,7 +465,7 @@ a.tag:hover { color: var(--green); }
   font-size: 0.92em;
 }
 .article pre {
-  background: var(--panel-2); border: 1px solid var(--line);
+  background: var(--code-bg); border: 1px solid var(--line);
   border-radius: var(--r-lg); padding: var(--space-5) var(--space-5);
   overflow-x: auto; font-size: 14px; line-height: 1.6;
 }
@@ -491,7 +477,7 @@ a.tag:hover { color: var(--green); }
   margin: var(--space-6) 0;
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
-  background: var(--panel-2);
+  background: var(--code-bg);
   overflow: hidden;
 }
 .cb-wrap pre {
@@ -507,16 +493,8 @@ a.tag:hover { color: var(--green); }
   gap: 5px;
   padding: var(--space-3) var(--space-4);
   border-bottom: 1px solid var(--line);
-  background: var(--panel);
+  background: var(--code-bg);
 }
-.cb-hdr i {
-  width: 9px; height: 9px; border-radius: 50%;
-  display: inline-block;
-  border: 1px solid var(--dot-rim);
-}
-.cb-hdr i:nth-child(1) { background: var(--dot-close); }
-.cb-hdr i:nth-child(2) { background: var(--dot-min); }
-.cb-hdr i:nth-child(3) { background: var(--dot-max); }
 .cb-hdr span {
   margin-left: 0.5rem;
   font-size: 12px;

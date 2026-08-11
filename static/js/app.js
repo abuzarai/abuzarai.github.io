@@ -24,7 +24,7 @@
 })();
 
 /* ============================================================
-   code-block chrome — terminal window (dots + lang + copy)
+   code-block chrome — terminal header (lang + copy)
    around <pre><code data-lang>. Highlighting itself is
    server-side: Zola/giallo, class mode → /giallo.css.
    ============================================================ */
@@ -45,11 +45,6 @@
 
     var hdr = document.createElement('div');
     hdr.className = 'cb-hdr';
-    var d, dot;
-    for (d = 0; d < 3; d++) {
-      dot = document.createElement('i');
-      hdr.appendChild(dot);
-    }
     var lbl = document.createElement('span');
     lbl.textContent = cls;
     hdr.appendChild(lbl);
