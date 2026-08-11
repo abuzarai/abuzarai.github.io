@@ -414,11 +414,8 @@ a.tag:hover { color: var(--green); }
 .post .meta { color: var(--dim); font-size: 13px; margin: 0 0 var(--space-7); }
 .article { font-size: 16px; line-height: 1.9; }
 .article h2 { font-size: 1.25rem; margin: var(--space-7) 0 var(--space-4); color: var(--fg); }
-.article h2::before { content: "## "; color: var(--faint); }
 .article h3 { font-size: 1.125rem; margin: var(--space-6) 0 var(--space-3); color: var(--fg); }
-.article h3::before { content: "### "; color: var(--faint); }
 .article h4 { font-size: 1rem; font-weight: 700; margin: var(--space-6) 0 var(--space-3); color: var(--fg); }
-.article h4::before { content: "#### "; color: var(--faint); }
 .article ul, .article ol { margin: 0 0 var(--space-5); padding-left: var(--space-6); max-width: var(--measure); }
 .article li { margin: var(--space-2) 0; }
 .article ul li::marker { color: var(--faint); }
