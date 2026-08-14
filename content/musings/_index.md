@@ -6,5 +6,5 @@ page_template = "post.html"
 
 [extra]
 subtitle = "general opinions & the occasional long think."
-other_link = { path = "posts/", label = "posts — technical write-ups" }
+other_link = { path = "posts/", label = "technical write-ups" }
 +++

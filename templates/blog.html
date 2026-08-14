@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% import "macros.html" as macros %}
 
-{% block wd %}~{{ section.path|trim_end_matches(pat='/') }}{% endblock wd %}
 
 {% block content %}
     {% set ls_cmd = "ls ~" ~ section.path|trim_end_matches(pat='/') %}
@@ -18,24 +17,21 @@
       <ul class="post-list">
         {% for p in section.pages %}
         <li>
-          <a class="pt" href="{{ p.permalink | safe }}">
+          <div class="pt">
             <span class="pd">{{ p.date | date(format="%Y-%m-%d") }}</span>
-            <b>{{ p.title }}</b>
+            <a class="pt-title" href="{{ p.permalink | safe }}"><b>{{ p.title }}</b></a>
             <span class="psub">{{ p.description }}</span>
-          </a>
-          {% if p.taxonomies.tags is defined %}{% for t in p.taxonomies.tags %}<a class="tag" href="{{ get_taxonomy_url(kind='tags', name=t) }}">#{{ t }}</a> {% endfor %}{% endif %}
-          {% if p.draft %}<span class="tag">#draft</span>{% endif %}
+          </div>
+          {% if p.taxonomies.tags is defined or p.draft %}<p class="ptags">{% if p.taxonomies.tags is defined %}{% for t in p.taxonomies.tags %}<a class="tag" href="{{ get_taxonomy_url(kind='tags', name=t) }}">#{{ t }}</a> {% endfor %}{% endif %}{% if p.draft %}<span class="tag">#draft</span>{% endif %}</p>{% endif %}
         </li>
         {% endfor %}
       </ul>
       {% else %}
-      <p class="muted">no entries in this directory — yet.</p>
+      <p class="muted">no entries in this directory yet.</p>
       {% endif %}
     </section>
 
     <footer class="list-foot">
-      <a class="rss-btn" href="{{ get_url(path='feed.xml', trailing_slash=false) | safe }}" rel="alternate">[ rss ]</a>
-      <span class="muted">/ feed.xml — all writings</span>
       {% if section.extra.other_link is defined %}
       <a class="muted" href="{{ get_url(path=section.extra.other_link.path) }}">→ {{ section.extra.other_link.label }}</a>
       {% endif %}

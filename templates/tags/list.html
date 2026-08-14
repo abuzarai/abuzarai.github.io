@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% import "macros.html" as macros %}
 
-{% block wd %}~/tags{% endblock wd %}
 
 {% block content %}
     <header class="hero">
@@ -25,7 +24,7 @@
         {% endfor %}
       </ul>
       {% else %}
-      <p class="muted">no tags — yet.</p>
+      <p class="muted">no tags yet.</p>
       {% endif %}
     </section>
 

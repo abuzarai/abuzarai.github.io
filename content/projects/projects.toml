@@ -1,0 +1,110 @@
+# Projects: single source of truth for the /projects page.
+# Order here is the display order.
+# `content` is markdown, rendered through the markdown filter in the template.
+
+[[project]]
+title = "Insafdaar"
+description = "Legal case management for Pakistani law firms: cases, hearings, documents, and billing, wrapped around AI voice intake, document drafting, and legal RAG."
+link = "https://github.com/abuzarai/insafdaar-webapp"
+tags = ["React", "Express", "PostgreSQL", "FastAPI", "Gemini", "Docker"]
+content = """
+A full-stack legal case-management platform for Pakistani courts and law
+firms: cases, hearings, documents, and billing in one system.
+
+The interesting part is what happens *between* the CRUD screens. Every case
+walks a 13-stage lifecycle modeled as a state machine; no case ever lands in
+the wrong stage. Across three portals (client, advocate, admin), users get JWT
+auth with role-based access, OTP-based e-contract signing, and PDF
+invoice/voucher generation with payment verification, plus OCR document
+extraction, AI-ranked advocate matching, Google Calendar and Meet integration,
+real-time notifications, and scheduled email reminders. The React SPA with
+Tailwind CSS is bilingual (English/Urdu via react-i18next), served behind
+Nginx, deployed on Oracle Cloud with Docker Compose and CI/CD via GitHub
+Actions.
+
+Three standalone AI microservices plug in via REST APIs and webhooks:
+
+- **[AI Document Drafting](https://github.com/abuzarai/drafting-assistant)**:
+  FastAPI service on Cloud Run. Generates 9 types of legal documents
+  (plaints, affidavits, appeals, contracts) with Gemini 2.5 Flash on Vertex
+  AI; case context assembled from the database, run through a multi-stage
+  generation pipeline, exported as formatted DOCX/PDF. Supports section-level
+  regeneration with custom advocate instructions.
+
+- **[Voice Intake Agent](https://github.com/abuzarai/voice-intake-agent)**:
+  FastAPI service on Cloud Run. Set up bilingual (Urdu/English) intake
+  interviews over WebSocket audio. GCP Speech-to-Text for real-time
+  transcription, Gemini 2.5 Flash for conversation flow and entity
+  extraction; structured JSON out with parties, locations, dates, amounts.
+  Audio stored in GCS with 7-day retention.
+
+- **[Legal RAG Assistant](https://github.com/abuzarai/legal-rag-assistant)**:
+  FastAPI service on Cloud Run with self-hosted Weaviate (v4) on GCE.
+  Ingests Pakistani case law and CPC section PDFs from Google Drive, chunks
+  and embeds them (Gemini text-embedding-005), and answers legal questions
+  with cited sources via hybrid search and Gemini 2.5 Flash.
+
+**Built with:** Express · React · PostgreSQL · Gemini 2.5 Flash · FastAPI ·
+Weaviate · Docker.
+"""
+
+[[project]]
+title = "Support Ticket Analysis & Response Automation"
+description = "Support automation that triages tickets and drafts replies in the customer's own language via a QLoRA fine-tune of Qwen2.5-3B. Nothing ships without human review."
+link = "https://github.com/abuzarai/support-ticket-automation"
+tags = ["FastAPI", "QLoRA", "Qwen2.5-3B", "Ollama", "SQLite"]
+content = """
+An end-to-end support automation system for teams whose customers write in
+*Roman Urdu* ("mera order kab aayega"), often code-switched with Urdu script
+and English in a single message.
+
+Tickets come in by email or web form and get triaged in one structured call:
+category (8 classes), urgency, sentiment, and key entities (order ID,
+product). A reply draft is then generated in the customer's own language,
+grounded in your uploaded knowledge-base policy documents (PDF/DOCX/MD) and
+checked for groundedness. **Nothing ships without a human review:** tickets
+land in a review-first inbox where an operator approves, corrects, or
+discards each draft.
+
+At its core is a QLoRA fine-tune of Qwen2.5-3B-Instruct that hits **80.4%
+category accuracy** (0-shot: 25%; an unnamed 70B baseline: 63.5%) with
+**100% valid JSON output**, at zero per-inference cost on local hardware via
+Ollama. One Pydantic schema and one prompt template are shared across
+training, evaluation, the API, and the UI; no drift between what was trained
+and what runs.
+
+Published to Hugging Face: [LoRA adapter (~57 MB)](https://huggingface.co/abuzarkhan/bilingual-ticket-triage-adapter),
+dataset, GGUF weights, and a live [Gradio demo Space](https://huggingface.co/spaces/abuzarkhan/bilingual-ticket-triage)
+that runs the fine-tuned model on ZeroGPU in the browser ([code: GitHub repo](https://github.com/abuzarai/support-ticket-automation)).
+
+**Built with:** FastAPI · SQLite · Ollama · QLoRA/Qwen2.5-3B · vanilla JS SPA
+dashboard · Pydantic shared schema · Gradio demo.
+"""
+
+[[project]]
+title = "Live Pose Detection"
+description = "Real-time desktop pose estimation for fitness: 33-keypoint tracking at 30+ FPS on CPU, with rep counting, form scoring, and posture analysis."
+link = "https://github.com/abuzarai/Live-Pose-Detection"
+tags = ["MediaPipe", "OpenCV", "Python", "PySide6"]
+content = """
+A desktop app for real-time pose estimation from a webcam: 33 full-body
+keypoints at 30+ FPS on CPU via MediaPipe PoseLandmarker.
+
+- **Exercise reps**: squat and push-up counting with configurable angle
+  thresholds
+- **Form scoring**: green/yellow/red skeleton overlay from joint-angle
+  quality
+- **Posture analysis**: forward head, uneven shoulders, rounded back, neck
+  tilt
+- **Live angle timeline**: a chart of joint angles over the last 300 frames
+- **Reference skeleton**: semi-transparent guide overlay to compare poses
+- **Video input**: run recorded .mp4 / .avi / .mov files instead of the
+  camera
+- **Session export**: annotated MP4 plus CSV/JSON keypoint data per session
+- **Multi-person**: up to 3 people tracked with proximity-assigned IDs
+
+PySide6 window with live feed and tabbed panels; OpenCV + NumPy/SciPy +
+Matplotlib underneath, uv for packaging, pytest for testing (15 tests).
+
+**Built with:** MediaPipe PoseLandmarker · PySide6 · OpenCV · Python · pytest.
+"""

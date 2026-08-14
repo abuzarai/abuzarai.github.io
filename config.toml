@@ -8,7 +8,7 @@ generate_sitemap = true
 generate_feeds = true
 feed_filenames = ["feed.xml"]
 
-# /tags/ groups all content (posts, musings, projects) by tag.
+# /tags/ groups all writings by tag.
 taxonomies = [{ name = "tags" }]
 
 [markdown]

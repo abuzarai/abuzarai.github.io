@@ -1,62 +1,33 @@
 {% extends "base.html" %}
 {% import "macros.html" as macros %}
 
-{% block wd %}~/tags/{{ term.slug }}{% endblock wd %}
 
 {% block content %}
-    {% set grep_cmd = 'grep -rn "#' ~ term.name ~ '" ~/posts ~/projects' %}
+    {% set grep_cmd = 'grep -rn "#' ~ term.name ~ '" ~/posts ~/musings' %}
     <header class="hero">
       <p class="prompt">{{ macros::prompt(cmd=grep_cmd) }}</p>
       <h1 class="sr-only">#{{ term.name }}</h1>
       <p class="sub">
-        {{ term.page_count }} item{% if term.page_count != 1 %}s{% endif %}{% if term.pages %}, across sections{% endif %}.
+        {{ term.page_count }} item{% if term.page_count != 1 %}s{% endif %}.
       </p>
     </header>
 
     <section class="block">
-      {% set_global writings = [] %}
-      {% set_global projects = [] %}
-      {% for p in term.pages %}
-        {% if p.path is starting_with("/posts/") or p.path is starting_with("/musings/") %}
-          {% set_global writings = writings | concat(with=p) %}
-        {% else %}
-          {% set_global projects = projects | concat(with=p) %}
-        {% endif %}
-      {% endfor %}
-
-      {% if writings %}
-      <h2 class="gh">writings</h2>
+      {% if term.pages %}
       <ul class="post-list">
-        {% for p in writings | sort(attribute="date") | reverse %}
+        {% for p in term.pages | sort(attribute="date") | reverse %}
         <li>
-          <a class="pt" href="{{ p.permalink | safe }}">
+          <div class="pt">
             <span class="pd">{{ p.date | date(format="%Y-%m-%d") }}</span>
-            <b>{{ p.title }}</b>
+            <a class="pt-title" href="{{ p.permalink | safe }}"><b>{{ p.title }}</b></a>
             <span class="psub">{{ p.description }}</span>
-          </a>
-          {% if p.draft %}<span class="tag">#draft</span>{% endif %}
+          </div>
+          {% if p.draft %}<p class="ptags"><span class="tag">#draft</span></p>{% endif %}
         </li>
         {% endfor %}
       </ul>
-      {% endif %}
-
-      {% if projects %}
-      <h2 class="gh">projects</h2>
-      <ul class="post-list">
-        {% for p in projects | sort(attribute="title") %}
-        <li>
-          <a class="pt" href="{{ p.permalink | safe }}">
-            <span class="pd">proj</span>
-            <b>{{ p.title }}</b>
-            <span class="psub">{{ p.description }}</span>
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-
-      {% if not writings and not projects %}
-      <p class="muted">no entries in this directory — yet.</p>
+      {% else %}
+      <p class="muted">no entries in this directory yet.</p>
       {% endif %}
     </section>
 
