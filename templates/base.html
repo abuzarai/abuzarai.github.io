@@ -41,7 +41,9 @@
       <a href="{{ get_url(path='contact/', trailing_slash=true) }}" {% if is_contact %}aria-current="true"{% endif %}>./contact</a>
     </nav>
 
+    <div class="content">
     {% block content %}{% endblock content %}
+    </div>
 
     <footer>
       <span>© <span class="yr">{{ now() | date(format="%Y") }}</span> abuzar khan</span>
