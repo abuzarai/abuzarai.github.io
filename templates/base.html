@@ -21,34 +21,35 @@
   <script defer src="{{ get_url(path='vendor/katex/contrib/auto-render.min.js') }}"></script>
   {% endif %}
   {% block head %}{% endblock %}
-  <title>{% if page.title %}{{ page.title }} · abuzar{% elif section.title %}{{ section.title }} · abuzar{% else %}abuzar ~ terminal{% endif %}</title>
+  <title>{% if page.title %}{{ page.title }} · abuzar{% elif term.name %}{{ term.name }} · abuzar{% elif taxonomy.name %}tags · abuzar{% elif current_path is defined and current_path == '/' %}{{ config.title }}{% elif section.title %}{{ section.title }} · abuzar{% else %}abuzar ~ terminal{% endif %}</title>
 </head>
 <body>
   <main class="page{% block main_class %}{% endblock main_class %}" id="top">
 
-    <div class="titlebar" aria-hidden="true">
-      <span class="wintitle">abuzar@ws: {% block wd %}~{% endblock wd %}</span>
-    </div>
-
-    <nav class="nav" aria-label="main">
-      {% set is_home = current_path is defined and current_path == '/' %}
-      {% set is_posts = current_path is defined and current_path is starting_with('/posts') %}
-      {% set is_projects = current_path is defined and current_path is starting_with('/projects') %}
-      {% set is_contact = current_path is defined and current_path is starting_with('/contact') %}
-      <a href="{{ get_url(path='/') }}" {% if is_home %}aria-current="true"{% endif %}>./</a>
-      <a href="{{ get_url(path='posts/', trailing_slash=true) }}" {% if is_posts %}aria-current="true"{% endif %}>./posts</a>
-      <a href="{{ get_url(path='projects/', trailing_slash=true) }}" {% if is_projects %}aria-current="true"{% endif %}>./projects</a>
-      <a href="{{ get_url(path='contact/', trailing_slash=true) }}" {% if is_contact %}aria-current="true"{% endif %}>./contact</a>
-    </nav>
+    <header class="titlebar">
+      <nav class="nav" aria-label="main">
+        {% set is_home = current_path is defined and current_path == '/' %}
+        {% set is_posts = current_path is defined and current_path is starting_with('/posts') %}
+        {% set is_projects = current_path is defined and current_path is starting_with('/projects') %}
+        <a href="{{ get_url(path='/') }}" {% if is_home %}aria-current="true"{% endif %}>./</a>
+        <a href="{{ get_url(path='posts/', trailing_slash=true) }}" {% if is_posts %}aria-current="true"{% endif %}>./posts</a>
+        <a href="{{ get_url(path='projects/', trailing_slash=true) }}" {% if is_projects %}aria-current="true"{% endif %}>./projects</a>
+      </nav>
+    </header>
 
     <div class="content">
     {% block content %}{% endblock content %}
     </div>
 
+    {% if current_path is not defined or current_path != '/' %}
     <footer>
       <span>© <span class="yr">{{ now() | date(format="%Y") }}</span> abuzar khan</span>
+      {% if current_path is defined and (current_path == '/posts/' or current_path == '/musings/') %}
+      <a class="rss-btn" href="{{ get_url(path='feed.xml', trailing_slash=false) | safe }}" rel="alternate">[ rss ]</a>
+      {% endif %}
       <span class="btt">↑ <a href="#top">back to top</a></span>
     </footer>
+    {% endif %}
   </main>
 
   <script src="{{ get_url(path='js/app.js') }}"></script>
