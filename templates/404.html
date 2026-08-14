@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 {% import "macros.html" as macros %}
-{% set section = false %} {# 404 has no section/page context — guards the base head's title fallback #}
+{% set section = false %} {# 404 has no section/page context: guards the base head's title fallback #}
 
 {% block main_class %} err{% endblock main_class %}
-{% block wd %}~/<span class="p404">the-page-you-wanted</span>{% endblock wd %}
 
 {% block content %}
     <p class="sub">{{ macros::prompt(cmd='ls <span class="p404">the-page-you-wanted</span>') }}</p>
@@ -14,7 +13,7 @@ No such file or directory</pre>
 
     <p>
       The file you're looking for isn't in this filesystem. Maybe it was moved,
-      renamed, or never written in the first place — classic me.
+      renamed, or never written in the first place. Classic me.
     </p>
 
     <ul class="links">

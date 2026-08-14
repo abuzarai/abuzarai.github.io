@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 {% import "macros.html" as macros %}
 
-{% block wd %}~{% endblock wd %}
 
 {% block content %}
-    <!-- hero: one shell session — $ whoami, then its output -->
+    <!-- hero: one shell session ($ whoami, then its output); copy lives in content/_index.md -->
     <header class="hero">
       <p class="prompt">{{ macros::prompt(cmd='whoami') }}</p>
-      <h1>abuzar khan<span class="cursor" aria-hidden="true"></span></h1>
-      <p class="sub">
-        I am an AI/ML engineer with a passion for building impactful, intelligent systems that solve real-world problems.
-        I fine-tune small models to work in
-        Urdu &amp; English, build the APIs and services that make them
-        actually useful, and deploy them into products people use — the whole
-        stack, soup to nuts.
-      </p>
+      <h1>{{ section.extra.name }}<span class="cursor" aria-hidden="true"></span></h1>
+      <div class="sub">
+        {{ section.content | trim | safe }}
+      </div>
+      <ul class="socials" aria-label="find me">
+        {% for s in section.extra.socials %}
+        <li><a href="{{ s.url }}" aria-label="{{ s.label }}"{% if not s.url is starting_with('mailto:') %} target="_blank" rel="noreferrer"{% endif %}>{{ macros::social_icon(name=s.name) }}</a></li>
+        {% endfor %}
+      </ul>
     </header>
 {% endblock content %}
