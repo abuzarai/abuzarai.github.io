@@ -1,12 +1,8 @@
 {% extends "base.html" %}
 {% import "macros.html" as macros %}
 
-
 {% block content %}
-    {% set grep_cmd = 'grep -rn "#' ~ term.name ~ '" ~/posts ~/musings' %}
     <header class="hero">
-      <p class="prompt">{{ macros::prompt(cmd=grep_cmd) }}</p>
-      <h1 class="sr-only">#{{ term.name }}</h1>
       <p class="sub">
         {{ term.page_count }} item{% if term.page_count != 1 %}s{% endif %}.
       </p>
@@ -17,17 +13,12 @@
       <ul class="post-list">
         {% for p in term.pages | sort(attribute="date") | reverse %}
         <li>
-          <div class="pt">
-            <span class="pd">{{ p.date | date(format="%Y-%m-%d") }}</span>
-            <a class="pt-title" href="{{ p.permalink | safe }}"><b>{{ p.title }}</b></a>
-            <span class="psub">{{ p.description }}</span>
-          </div>
-          {% if p.draft %}<p class="ptags"><span class="tag">#draft</span></p>{% endif %}
+          {{ macros::card(date=p.date | date(format="%Y-%m-%d"), title=p.title, url=p.permalink, desc=p.description, draft=p.draft) }}
         </li>
         {% endfor %}
       </ul>
       {% else %}
-      <p class="muted">no entries in this directory yet.</p>
+      <p class="muted">Nothing here yet.</p>
       {% endif %}
     </section>
 

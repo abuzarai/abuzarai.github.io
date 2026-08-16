@@ -3,29 +3,11 @@
 
 {% block content %}
     {% set projects = load_data(path="content/projects/projects.toml", format="toml") %}
-    <header class="hero">
-      <p class="prompt">{{ macros::prompt(cmd='ls ~/projects') }}</p>
-      <h1 class="sr-only">projects</h1>
-      <p class="sub">
-        some cool projects i made.
-      </p>
-    </header>
-
     <section class="block">
       <ul class="post-list">
         {% for p in projects.project %}
         <li>
-          <div class="pt">
-            <a class="pt-title" href="{{ p.link }}" target="_blank" rel="noreferrer"><b>{{ p.title }}</b></a>
-            <span class="psub">{{ p.description }}</span>
-          </div>
-          {% if p.tags %}<p class="ptags">{% for t in p.tags %}<span class="tag">#{{ t }}</span> {% endfor %}</p>{% endif %}
-          <details class="proj-more">
-            <summary><span class="exp" aria-hidden="true"></span><span class="sr-only">expand details</span></summary>
-            <div class="proj-body">
-              {{ p.content | trim | markdown | safe }}
-            </div>
-          </details>
+          {{ macros::card(title=p.title, url=p.link, external=true, desc=p.description, tags=p.tags | default(value=""), tag_links=false, expand=p.content) }}
         </li>
         {% endfor %}
       </ul>

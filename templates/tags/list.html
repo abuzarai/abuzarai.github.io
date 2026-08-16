@@ -1,13 +1,10 @@
 {% extends "base.html" %}
-{% import "macros.html" as macros %}
 
 
 {% block content %}
     <header class="hero">
-      <p class="prompt">{{ macros::prompt(cmd='ls ~/tags') }}</p>
-      <h1 class="sr-only">tags</h1>
       <p class="sub">
-        every tag, one row each. writings &amp; projects mix here.
+        All tags.
       </p>
     </header>
 
@@ -29,6 +26,6 @@
     </section>
 
     <footer class="list-foot">
-      <a class="muted" href="{{ get_url(path='posts/', trailing_slash=true) }}">← posts</a>
+      <a class="muted" href="{{ get_url(path='writings/', trailing_slash=true) }}">← writings</a>
     </footer>
 {% endblock content %}

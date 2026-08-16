@@ -1,19 +1,15 @@
 {% extends "base.html" %}
-{% import "macros.html" as macros %}
+
+{% block main_class %} home{% endblock main_class %}
 
 
 {% block content %}
-    <!-- hero: one shell session ($ whoami, then its output); copy lives in content/_index.md -->
+    <!-- hero: one-line greeting; copy lives in content/_index.md -->
     <header class="hero">
-      <p class="prompt">{{ macros::prompt(cmd='whoami') }}</p>
-      <h1>{{ section.extra.name }}<span class="cursor" aria-hidden="true"></span></h1>
+      <p class="greet">Hey, I'm</p>
+      <h1>{{ section.extra.name }}</h1>
       <div class="sub">
         {{ section.content | trim | safe }}
       </div>
-      <ul class="socials" aria-label="find me">
-        {% for s in section.extra.socials %}
-        <li><a href="{{ s.url }}" aria-label="{{ s.label }}"{% if not s.url is starting_with('mailto:') %} target="_blank" rel="noreferrer"{% endif %}>{{ macros::social_icon(name=s.name) }}</a></li>
-        {% endfor %}
-      </ul>
     </header>
 {% endblock content %}
