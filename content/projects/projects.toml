@@ -49,7 +49,7 @@ description = "Support automation that triages tickets and drafts replies in the
 link = "https://github.com/abuzarai/support-ticket-automation"
 tags = ["FastAPI", "QLoRA", "Qwen2.5-3B", "Ollama", "SQLite"]
 content = """
-Teams in Pakistan write tickets in *Roman Urdu* ("mera order kab aayega"),
+Customers in Pakistan write support tickets in *Roman Urdu* ("mera order kab aayega"),
 often code-switched with Urdu script and English in a single message.
 
 Tickets come in by email or web form and get triaged in one structured call:
@@ -68,8 +68,8 @@ training, evaluation, the API, and the UI; no drift between what was trained
 and what runs.
 
 Published to Hugging Face: [LoRA adapter (~57 MB)](https://huggingface.co/abuzarkhan/bilingual-ticket-triage-adapter),
-dataset, GGUF weights, and a live [Gradio demo Space](https://huggingface.co/spaces/abuzarkhan/bilingual-ticket-triage)
-that runs the fine-tuned model on ZeroGPU in the browser ([code: GitHub repo](https://github.com/abuzarai/support-ticket-automation)).
+[dataset](https://huggingface.co/datasets/abuzarkhan/bilingual-ticket-triage-dataset), [GGUF weights](https://huggingface.co/abuzarkhan/bilingual-ticket-triage-gguf), and a live [Gradio demo Space](https://huggingface.co/spaces/abuzarkhan/bilingual-ticket-triage)
+that runs the fine-tuned model on ZeroGPU in the browser.
 """
 
 [[project]]
