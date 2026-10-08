@@ -44,7 +44,6 @@
   --r-lg: 0px;
   --dur-snap: 120ms;
   --dur-fast: 150ms;
-  --dur-expand: 220ms;
 
   /* spacing ladder (B2); region rulers stay --pad/--space */
   --space-1: 0.125rem;
@@ -90,7 +89,6 @@
 html {
   color-scheme: dark;
   scroll-behavior: smooth;
-  interpolate-size: allow-keywords;  /* animated <details> open, where supported */
 }
 
 body {
@@ -266,48 +264,6 @@ summary:focus-visible {
 .hero + .block { margin-top: 0; } /* tags pages keep their hero — no double gap */
 
 
-/* ---------- projects (TOML collection) — card styles are shared with /posts, see .post-list below ---------- */
-.proj-more summary {
-  cursor: pointer;
-  list-style: none;
-  padding: var(--space-2) 0 0;
-  color: var(--dim);
-  font-size: 13px;
-  user-select: none;
-}
-.proj-more summary::-webkit-details-marker { display: none; }
-.proj-more summary:hover { color: var(--amber); }
-.proj-more summary .exp::before { content: "+"; }
-.proj-more[open] summary .exp::before { content: "-"; }
-
-/* smooth expand/collapse (Chrome 131+/Firefox 140+; instant elsewhere) */
-.proj-more::details-content {
-  block-size: 0;
-  overflow: clip;
-  transition: block-size var(--dur-expand) ease;
-}
-.proj-more[open]::details-content { block-size: auto; }
-
-.proj-body {
-  padding-top: var(--space-3);
-  color: var(--dim);
-  font-size: 15px;
-  line-height: 1.75;
-}
-.proj-body p { margin: 0 0 var(--space-3); max-width: var(--measure); }
-.proj-body p:last-child { margin-bottom: 0; }
-.proj-body strong { color: var(--fg); }
-.proj-body a { color: var(--green); }
-.proj-body a:hover { color: var(--amber); }
-.proj-body ul {
-  margin: 0 0 var(--space-3);
-  padding-left: var(--space-5);
-}
-.proj-body ul:last-child { margin-bottom: 0; }
-.proj-body li { margin: 0 0 var(--space-2); }
-.proj-body li:last-child { margin-bottom: 0; }
-.proj-body li p { margin: 0; } /* loose-list bullets wrap in <p> — kill the extra rhythm */
-
 /* ---------- rss button (bottom of musings) ---------- */
 
 .list-foot {
@@ -405,6 +361,18 @@ footer a:hover { color: var(--amber); }
 .post-list span.tag { color: var(--fg); } /* inert chips (project tags, #draft) are metadata, not links */
 .post-list a.tag:hover { color: var(--green); }
 .meta .tag { color: var(--amber); font-size: 12px; }
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  margin-right: var(--space-3);
+  vertical-align: middle;
+  color: var(--dim);
+  text-decoration: none;
+}
+.source-link svg { width: 16px; height: 16px; }
+.source-link:hover { color: var(--green); }
 a.tag { text-decoration: none; }
 a.tag:hover { color: var(--green); }
 
@@ -419,6 +387,8 @@ a.tag:hover { color: var(--green); }
 .gh:first-child { margin-top: 0; }
 
 /* ---------- post page ---------- */
+
+.post { padding-top: var(--space-6); }
 
 .post h1 {
   margin: 0 0 var(--space-2);
@@ -582,7 +552,6 @@ a.tag:hover { color: var(--green); }
     transition-duration: 0.01ms !important;
   }
   html { scroll-behavior: auto; }
-  .proj-more::details-content { transition: none; }
 }
 
 /* ---------- small screens ---------- */
@@ -608,12 +577,12 @@ a.tag:hover { color: var(--green); }
   .page { max-width: none; min-height: 0; padding: 0; }
   .hero h1 { font-size: 16pt; }
   .post h1 { font-size: 14pt; }
-  .hero .sub, .proj-body, .article { font-size: 10.5pt; line-height: 1.55; }
+  .hero .sub, .article { font-size: 10.5pt; line-height: 1.55; }
   p { max-width: none; }
   a { color: #111 !important; text-decoration: underline; }
   .cb-wrap, .article pre, .article code { border: 1px solid #999; }
   .article pre { white-space: pre-wrap; overflow: visible; word-break: break-word; }
-  .proj-more summary .exp::before, .back::before { content: none; }
+  .back::before { content: none; }
   /* article back-navigation ("all posts") is print chrome — keep the © footer */
   .back { display: none !important; }
 }

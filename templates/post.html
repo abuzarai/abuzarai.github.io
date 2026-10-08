@@ -4,12 +4,14 @@
 {% block content %}
     <article class="post">
       <h1>{{ page.title }}</h1>
+      {% block detail_meta %}
       <p class="meta">{{ page.date | date(format="%Y-%m-%d") }} · {% if page.reading_time %}{{ page.reading_time }} min read{% endif %}
         {% if page.taxonomies.tags is defined %}{% for t in page.taxonomies.tags %}<a class="tag" href="{{ get_taxonomy_url(kind='tags', name=t) }}">#{{ t }}</a> {% endfor %}{% endif %}
       </p>
+      {% endblock detail_meta %}
       <div class="article">
         {{ page.content | safe }}
       </div>
-      <a class="back" href="{{ get_url(path='writings/', trailing_slash=true) }}">all writings</a>
+      {% block detail_back %}<a class="back" href="{{ get_url(path='writings/', trailing_slash=true) }}">all writings</a>{% endblock detail_back %}
     </article>
 {% endblock content %}

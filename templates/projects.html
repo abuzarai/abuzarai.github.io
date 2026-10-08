@@ -2,12 +2,11 @@
 {% import "macros.html" as macros %}
 
 {% block content %}
-    {% set projects = load_data(path="content/projects/projects.toml", format="toml") %}
     <section class="block">
       <ul class="post-list">
-        {% for p in projects.project %}
+        {% for p in section.pages %}
         <li>
-          {{ macros::card(title=p.title, url=p.link, external=true, desc=p.description, tags=p.tags | default(value=""), tag_links=false, expand=p.content) }}
+          {{ macros::card(title=p.title, url=p.permalink, desc=p.description, tags=p.extra.technologies | default(value=""), tag_links=false) }}
         </li>
         {% endfor %}
       </ul>

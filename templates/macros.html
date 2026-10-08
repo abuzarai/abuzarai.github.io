@@ -1,21 +1,14 @@
 {# Listing card: one source of truth for every row in .post-list
    (writings, tag term pages, projects). The row's shape lives here only.
    - tags: array of names; tag_links=false renders them as inert chips (projects)
-   - expand: raw markdown for the projects <details> body; empty = no expander
    NB: Tera macro defaults accept literals only — no array literals (tags=""). #}
-{% macro card(date="", title="", url="", external=false, desc="", tags="", tag_links=true, draft=false, expand="") -%}
+{% macro card(date="", title="", url="", external=false, desc="", tags="", tag_links=true, draft=false) -%}
 <div class="pt">
   {% if date %}<span class="pd">{{ date }}</span>{% endif %}
   <a class="pt-title" href="{{ url }}"{% if external %} target="_blank" rel="noreferrer"{% endif %}><b>{{ title }}</b></a>
   {% if desc %}<span class="psub">{{ desc }}</span>{% endif %}
 </div>
 {% if tags or draft %}<p class="ptags">{% for t in tags %}{% if tag_links %}<a class="tag" href="{{ get_taxonomy_url(kind='tags', name=t) }}">#{{ t }}</a> {% else %}<span class="tag">#{{ t }}</span> {% endif %}{% endfor %}{% if draft %}<span class="tag">#draft</span>{% endif %}</p>{% endif %}
-{% if expand %}<details class="proj-more">
-<summary><span class="exp" aria-hidden="true"></span><span class="sr-only">expand details</span></summary>
-<div class="proj-body">
-{{ expand | trim | markdown | safe }}
-</div>
-</details>{% endif %}
 {%- endmacro card %}
 
 {# The leaf mark: the site's one signature. The path data lives here only —
